@@ -88,6 +88,10 @@ AI image generation uses Stable Diffusion XL via Diffusers.
 3. Run the application:
 streamlit run Prototype.py
 
+4. Sign-up/Sign-in:
+On the homepage, no sign-up is required.
+You may enter any username and proceed directly to the application.
+
 
 ---
 

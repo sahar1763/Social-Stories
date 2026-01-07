@@ -174,56 +174,73 @@ if "question_index" not in st.session_state:
     st.session_state.question_index = 0
 
 
+## Dev menu for debug
+# with st.sidebar:
+#     st.markdown("### Dev Navigation")
+#     # st.title("Menu")
+#     # st.write(f"Logged in as Admin")
+#     if st.button("Go to login"):
+#         st.session_state.page = "login"
+#         st.rerun()
+#     if st.button("Go to Manage_Profiles"):
+#         st.session_state.page = "Manage_Profiles"
+#         st.rerun()
+#     if st.button("Go to new_profile"):
+#         st.session_state.page = "new_profile"
+#         st.rerun()
+#     if st.button("Go to child_profile"):
+#         st.session_state.page = "child_profile"
+#         st.rerun()
+#     if st.button("Go to create_new_story"):
+#         st.session_state.page = "create_new_story"
+#         st.rerun()
+#     if st.button("Go to new_school_story"):
+#         st.session_state.page = "new_school_story"
+#         st.rerun()
+#     if st.button("Go to new_pet_story"):
+#         st.session_state.page = "new_pet_story"
+#         st.rerun()
+#     if st.button("Go to new_baby_story"):
+#         st.session_state.page = "new_baby_story"
+#         st.rerun()
+#     if st.button("Go to custom_story_details"):
+#         st.session_state.page = "custom_story_details"
+#         st.rerun()
+#     if st.button("Go to additional_details_1"):
+#         st.session_state.page = "additional_details_1"
+#         st.rerun()
+#     if st.button("Go to additional_details_2"):
+#         st.session_state.page = "additional_details_2"
+#         st.rerun()
+#     if st.button("Go to story_display"):
+#         st.session_state.page = "story_display"
+#         st.rerun()
+#     if st.button("Go to like_story"):
+#         st.session_state.page = "like_story"
+#         st.rerun()
+#     if st.button("Go to dislike_story"):
+#         st.session_state.page = "dislike_story"
+#         st.rerun()
+#     if st.button("Go to saved_story_display"):
+#         st.session_state.page = "saved_story_display"
+#         st.rerun()
+
+# Menu Implementation
 with st.sidebar:
-    st.markdown("### Dev Navigation")
-    # st.title("Menu")
-    # st.write(f"Logged in as Admin")
-    if st.button("Go to login"):
-        st.session_state.page = "login"
-        st.rerun()
-    if st.button("Go to Manage_Profiles"):
+    st.title("Menu")
+    if st.button("Home Page"):
         st.session_state.page = "Manage_Profiles"
         st.rerun()
-    if st.button("Go to new_profile"):
+    if st.button("Create New Profile"):
         st.session_state.page = "new_profile"
         st.rerun()
-    if st.button("Go to child_profile"):
-        st.session_state.page = "child_profile"
-        st.rerun()
-    if st.button("Go to create_new_story"):
-        st.session_state.page = "create_new_story"
-        st.rerun()
-    if st.button("Go to new_school_story"):
-        st.session_state.page = "new_school_story"
-        st.rerun()
-    if st.button("Go to new_pet_story"):
-        st.session_state.page = "new_pet_story"
-        st.rerun()
-    if st.button("Go to new_baby_story"):
-        st.session_state.page = "new_baby_story"
-        st.rerun()
-    if st.button("Go to custom_story_details"):
-        st.session_state.page = "custom_story_details"
-        st.rerun()
-    if st.button("Go to additional_details_1"):
-        st.session_state.page = "additional_details_1"
-        st.rerun()
-    if st.button("Go to additional_details_2"):
-        st.session_state.page = "additional_details_2"
-        st.rerun()
-    if st.button("Go to story_display"):
-        st.session_state.page = "story_display"
-        st.rerun()
-    if st.button("Go to like_story"):
-        st.session_state.page = "like_story"
-        st.rerun()
-    if st.button("Go to dislike_story"):
-        st.session_state.page = "dislike_story"
-        st.rerun()
-    if st.button("Go to saved_story_display"):
-        st.session_state.page = "saved_story_display"
-        st.rerun()
 
+    st.markdown("<br>" * 20, unsafe_allow_html=True)
+
+
+    if st.button("Log Out"):
+        st.session_state.page = "login"
+        st.rerun()
 
 
 # Initialize session state for navigation and data persistence
