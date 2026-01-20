@@ -228,7 +228,7 @@ if "question_index" not in st.session_state:
 # Menu Implementation
 with st.sidebar:
     st.title("Menu")
-    if st.button("Home Page"):
+    if st.button("Manage Profiles"):
         st.session_state.page = "Manage_Profiles"
         st.rerun()
     if st.button("Create New Profile"):
@@ -1958,6 +1958,9 @@ def show_additional_details_1():
                     # --- final generation ---
                     st.session_state.story_display = generate_story_from_session()
 
+                    # --- CLEAR Previous IMAGE if needed ---
+                    st.session_state.pop("story_image", None)
+
                     st.session_state.question_index = 3
                     st.session_state.is_thinking = False
                     navigate_to("story_display")
@@ -2419,6 +2422,62 @@ def show_dislike_story():
             st.rerun()
 
     st.write("")
+    # =========================================================
+    # VISUALIZATION (COPIED EXACTLY FROM STORY DISPLAY)
+    # =========================================================
+
+    # 1. EXTRACT DATA
+    raw_text = st.session_state.get("story_display", "")
+
+    # Defaults
+    final_title = "Your Story"
+    final_content = raw_text  # Fallback
+
+    if raw_text:
+        parts = raw_text.split('\n', 1)
+        if len(parts) >= 2:
+            final_title = parts[0].strip().replace("**", "").replace("Title:", "").strip()
+            final_content = parts[1].strip()
+
+    # 2. DISPLAY TITLE (H1)
+    st.markdown(
+        f"<h1 style='text-align:center;'>{final_title}</h1>",
+        unsafe_allow_html=True
+    )
+    st.markdown("<br><br>", unsafe_allow_html=True)
+
+    # 3. DISPLAY CONTENT (Exact Box Style)
+    with st.container(border=True):
+        st.markdown(
+            f"""
+                <div style='
+                    font-size: 1.1em;
+                    line-height: 1.6;
+                    padding: 20px;
+                    background-color: white;
+                    border-radius: 10px;
+                '>
+                    {final_content}
+                </div>
+                """,
+            unsafe_allow_html=True
+        )
+
+    # 4. DISPLAY IMAGE (If exists)
+    if "story_image" in st.session_state:
+        st.markdown("<br>", unsafe_allow_html=True)
+        col_l, col_c, col_r = st.columns([2, 2, 2])
+        with col_c:
+            st.image(
+                st.session_state.story_image,
+                width="stretch"
+            )
+
+    st.markdown("<br><hr><br>", unsafe_allow_html=True)
+
+    # =========================================================
+    # END VISUALIZATION -> START FEEDBACK FORM
+    # =========================================================
 
     # --- Titles ---
     st.markdown("<h2 style='text-align: center;'>We're sorry the story wasn't quite right</h2>", unsafe_allow_html=True)
